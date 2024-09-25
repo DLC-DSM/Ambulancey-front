@@ -5,11 +5,11 @@ import Input from "../components/Input"
 import Button from "../components/Button"
 import { useNavigate } from "react-router-dom"
 
-function LoginPage() {
+function SignupPage() {
     const navigate = useNavigate()
 
-    const toSignupHandler = () => {
-        navigate("/signup")
+    const toLoginHandler = () => {
+        navigate("/login")
     }
 
     return (
@@ -20,22 +20,42 @@ function LoginPage() {
                 </LogoContainer>
 
                 <TitleWrapper>
-                    <Title>로그인</Title>
-                    <SubTitle>로그인하여 AMBULANCEY를 이용하세요</SubTitle>
+                    <Title>회원가입</Title>
+                    <SubTitle>회원가입하여 AMBULANCEY를 이용하세요</SubTitle>
                 </TitleWrapper>
 
                 <Form>
+                    <Input
+                        label="병원 이름"
+                        placeholder="병원 이름을 입력해주세요"
+                    />
+                    <Input
+                        label="병원 종류"
+                        placeholder="병원 종류를 입력해주세요"
+                    />
+                    <Input
+                        label="병원 주소"
+                        placeholder="병원 주소를 입력해주세요"
+                    />
+                    <Input
+                        label="병원 전화번호"
+                        placeholder="병원 전화번호를 입력해주세요"
+                    />
                     <Input label="아이디" placeholder="아이디를 입력해주세요" />
                     <Input
                         label="비밀번호"
                         placeholder="비밀번호를 입력해주세요"
                     />
+                    <Input
+                        label="비밀번호 확인"
+                        placeholder="비밀번호를 다시 입력해주세요"
+                    />
 
                     <ButtonWrapper>
-                        <Button text="로그인" />
+                        <Button text="회원가입" />
                         <Ask>
-                            계정이 없으신가요?{" "}
-                            <Accent onClick={toSignupHandler}>회원가입</Accent>
+                            이미 계정이 있으신가요?{" "}
+                            <Accent onClick={toLoginHandler}>로그인</Accent>
                         </Ask>
                     </ButtonWrapper>
                 </Form>
@@ -44,11 +64,11 @@ function LoginPage() {
     )
 }
 
-export default LoginPage
+export default SignupPage
 
 const Background = styled.div`
     width: 100%;
-    height: 100vh;
+    padding: 40px 0;
     display: flex;
     justify-content: center;
     align-items: center;
