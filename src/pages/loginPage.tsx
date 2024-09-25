@@ -102,12 +102,6 @@ const Accent = styled.span`
     cursor: pointer;
 `
 
-const InputWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-`
-
 const ButtonWrapper = styled.div`
     display: flex;
     justify-content: center;
