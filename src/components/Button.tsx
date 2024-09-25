@@ -3,12 +3,13 @@ import { Colors } from "../Style/colors"
 
 interface Props {
     text?: string
+    onClick?: () => void
 }
 
-function Button({ text }: Props) {
+function Button({ text, onClick }: Props) {
     return (
         <>
-            <ButtonContainer>{text}</ButtonContainer>
+            <ButtonContainer onClick={onClick}>{text}</ButtonContainer>
         </>
     )
 }
@@ -16,7 +17,7 @@ function Button({ text }: Props) {
 export default Button
 
 const ButtonContainer = styled.button`
-    width: 300px;
+    width: 411.6px;
     height: 40px;
     background: ${Colors.Blue500};
     border: none;
