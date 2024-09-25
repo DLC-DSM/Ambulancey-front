@@ -3,8 +3,15 @@ import { Colors } from "../Style/colors"
 import MiniLogo from "../assets/MiniLogo"
 import Input from "../components/Input"
 import Button from "../components/Button"
+import { useNavigate } from "react-router-dom"
 
 function LoginPage() {
+    const navigate = useNavigate()
+
+    const toSignupHandler = () => {
+        navigate("/signup")
+    }
+
     return (
         <>
             <Background>
@@ -21,13 +28,14 @@ function LoginPage() {
                     <Input label="아이디" placeholder="아이디를 입력해주세요" />
                     <Input
                         label="비밀번호"
-                        placeholder="아이디를 입력해주세요"
+                        placeholder="비밀번호를 입력해주세요"
                     />
 
                     <ButtonWrapper>
                         <Button text="로그인" />
                         <Ask>
-                            계정이 없으신가요? <Accent>회원가입</Accent>
+                            계정이 없으신가요?{" "}
+                            <Accent onClick={toSignupHandler}>회원가입</Accent>
                         </Ask>
                     </ButtonWrapper>
                 </Form>
