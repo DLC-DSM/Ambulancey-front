@@ -12,6 +12,10 @@ function LoginPage() {
         navigate("/signup")
     }
 
+    const toMainHandler = () => {
+        navigate("/main")
+    }
+
     return (
         <>
             <Background>
@@ -32,7 +36,7 @@ function LoginPage() {
                     />
 
                     <ButtonWrapper>
-                        <Button text="로그인" />
+                        <Button onClick={toMainHandler} text="로그인" />
                         <Ask>
                             계정이 없으신가요?{" "}
                             <Accent onClick={toSignupHandler}>회원가입</Accent>
