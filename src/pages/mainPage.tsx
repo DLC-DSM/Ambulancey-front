@@ -6,7 +6,7 @@ function MainPage() {
     return (
         <>
             <Background>
-                <SideBar name="대덕소프트웨어마이스터병원" type="정형외과" />
+                <SideBar name="대덕소프트웨어마이스터병원" type="정신병원" />
             </Background>
         </>
     )
