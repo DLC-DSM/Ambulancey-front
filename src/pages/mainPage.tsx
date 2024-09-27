@@ -2,13 +2,15 @@ import styled from "styled-components"
 import { Colors } from "../Style/colors"
 import SideBar from "../components/SideBar"
 import InformInput from "../components/InformInput"
+import Comment from "../components/comment"
 
 function MainPage() {
     return (
         <>
-            <Background>
+            <SideBarContainer>
                 <SideBar name="대덕소프트웨어마이스터병원" type="정신병원" />
-
+            </SideBarContainer>
+            <Background>
                 <Container>
                     <InformContainer>
                         <InformTitle>병원 정보</InformTitle>
@@ -39,6 +41,34 @@ function MainPage() {
 
                     <InformContainer>
                         <InformTitle>병원 후기</InformTitle>
+                        <CommentContainer>
+                            <InformSubTitle>병원 리뷰</InformSubTitle>
+                            <Comment
+                                user="서지호"
+                                star={3}
+                                content="아니 집가고 싶다니까 안 보내줘요"
+                            />
+                            <Comment
+                                user="서지호"
+                                star={3}
+                                content="아니 집가고 싶다니까 안 보내줘요"
+                            />
+                            <Comment
+                                user="서지호"
+                                star={3}
+                                content="아니 집가고 싶다니까 안 보내줘요"
+                            />
+                            <Comment
+                                user="서지호"
+                                star={3}
+                                content="아니 집가고 싶다니까 안 보내줘요"
+                            />
+                            <Comment
+                                user="서지호"
+                                star={3}
+                                content="아니 집가고 싶다니까 안 보내줘요"
+                            />
+                        </CommentContainer>
                     </InformContainer>
                 </Container>
             </Background>
@@ -48,9 +78,18 @@ function MainPage() {
 
 export default MainPage
 
-const Background = styled.div`
+const SideBarContainer = styled.div`
     width: 100%;
     height: 100vh;
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+`
+
+const Background = styled.div`
+    width: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -103,4 +142,18 @@ const SubmitButton = styled.button`
     align-items: center;
     font-size: 16px;
     cursor: pointer;
+`
+
+const CommentContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 10px;
+`
+
+const InformSubTitle = styled.div`
+    margin-left: 5px;
+    color: ${Colors.Black};
+    font-size: 20px;
 `
