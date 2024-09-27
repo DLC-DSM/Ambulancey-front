@@ -5,6 +5,34 @@ import InformInput from "../components/InformInput"
 import Comment from "../components/comment"
 
 function MainPage() {
+    const Reviews = [
+        {
+            user_id: "서지호",
+            content: "아니 집에 가고 싶다니까 안 보내줘요",
+            star: 1,
+        },
+        {
+            user_id: "김성민",
+            content: "아무나 내 코드 리뷰해주실분",
+            star: 3,
+        },
+        {
+            user_id: "양병건",
+            content: "코드리뷰 해달라구요?",
+            star: 3,
+        },
+        {
+            user_id: "김효정",
+            content: "으앙 집가고 싶다",
+            star: 5,
+        },
+        {
+            user_id: "김성민",
+            content: "재미없어",
+            star: 2,
+        },
+    ]
+
     return (
         <>
             <SideBarContainer>
@@ -43,31 +71,15 @@ function MainPage() {
                         <InformTitle>병원 후기</InformTitle>
                         <CommentContainer>
                             <InformSubTitle>병원 리뷰</InformSubTitle>
-                            <Comment
-                                user="서지호"
-                                star={3}
-                                content="아니 집가고 싶다니까 안 보내줘요"
-                            />
-                            <Comment
-                                user="서지호"
-                                star={3}
-                                content="아니 집가고 싶다니까 안 보내줘요"
-                            />
-                            <Comment
-                                user="서지호"
-                                star={3}
-                                content="아니 집가고 싶다니까 안 보내줘요"
-                            />
-                            <Comment
-                                user="서지호"
-                                star={3}
-                                content="아니 집가고 싶다니까 안 보내줘요"
-                            />
-                            <Comment
-                                user="서지호"
-                                star={3}
-                                content="아니 집가고 싶다니까 안 보내줘요"
-                            />
+                            {Reviews.map((v) => {
+                                return (
+                                    <Comment
+                                        user={v.user_id}
+                                        star={v.star}
+                                        content={v.content}
+                                    />
+                                )
+                            })}
                         </CommentContainer>
                     </InformContainer>
                 </Container>
@@ -96,6 +108,7 @@ const Background = styled.div`
 `
 
 const Container = styled.div`
+    z-index: 2;
     margin-left: auto;
     width: 78.65%;
     padding: 50px 0;
