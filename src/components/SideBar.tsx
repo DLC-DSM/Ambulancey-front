@@ -80,7 +80,7 @@ const MenuContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 5px;
+    gap: 20px;
 `
 
 const ParentMenu = styled.div`
