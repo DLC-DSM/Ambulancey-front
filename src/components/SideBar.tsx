@@ -41,7 +41,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 80px;
 `
 
 const ProfileContainer = styled.div`
