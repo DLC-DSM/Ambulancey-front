@@ -19,16 +19,7 @@ function SideBar({ name, type }: Props) {
 
                 <MenuContainer>
                     <ParentMenu>병원 정보</ParentMenu>
-                    <ChildMenu>병원 이름</ChildMenu>
-                    <ChildMenu>병원 종류</ChildMenu>
-                    <ChildMenu>병원 주소</ChildMenu>
-                    <ChildMenu>병원 전화번호</ChildMenu>
-                </MenuContainer>
-
-                <MenuContainer>
                     <ParentMenu>병원 후기</ParentMenu>
-                    <ChildMenu>병원 평점</ChildMenu>
-                    <ChildMenu>병원 리뷰</ChildMenu>
                 </MenuContainer>
             </Container>
         </>
@@ -100,20 +91,6 @@ const ParentMenu = styled.div`
     font-size: 16px;
     font-weight: bold;
     color: ${Colors.Black};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-`
-
-const ChildMenu = styled.div`
-    width: 100%;
-    height: 35px;
-    border: 1px solid ${Colors.Blue100};
-    border-left: none;
-    border-right: none;
-    font-size: 16px;
-    color: ${Colors.Gray700};
     display: flex;
     justify-content: center;
     align-items: center;
