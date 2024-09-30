@@ -3,8 +3,53 @@ import { Colors } from "../Style/colors"
 import SideBar from "../components/SideBar"
 import InformInput from "../components/InformInput"
 import Comment from "../components/comment"
+import StarRate from "../components/StarRating"
+import StarLeveling from "../components/StarLeveling"
 
 function MainPage() {
+    const Reviews = [
+        {
+            user_id: "서지호",
+            content: "아니 집에 가고 싶다니까 안 보내줘요",
+            star: 1,
+        },
+        {
+            user_id: "김성민",
+            content: "아무나 내 코드 리뷰해주실분",
+            star: 3,
+        },
+        {
+            user_id: "양병건",
+            content: "코드리뷰 해달라구요?",
+            star: 3,
+        },
+        {
+            user_id: "김효정",
+            content: "으앙 집가고 싶다",
+            star: 5,
+        },
+        {
+            user_id: "김성민",
+            content: "재미없어",
+            star: 2,
+        },
+    ]
+
+    const average =
+        Reviews.filter((v) => v.star).reduce((a, b) => a + b.star, 0) /
+        Reviews.length
+
+    const five =
+        (Reviews.filter((v) => v.star == 5).length / Reviews.length) * 5
+    const four =
+        (Reviews.filter((v) => v.star == 4).length / Reviews.length) * 5
+    const three =
+        (Reviews.filter((v) => v.star == 3).length / Reviews.length) * 5
+    const two = (Reviews.filter((v) => v.star == 2).length / Reviews.length) * 5
+    const one = (Reviews.filter((v) => v.star == 1).length / Reviews.length) * 5
+
+    const Level = [five, four, three, two, one]
+
     return (
         <>
             <SideBarContainer>
@@ -42,32 +87,40 @@ function MainPage() {
                     <InformContainer>
                         <InformTitle>병원 후기</InformTitle>
                         <CommentContainer>
+                            <InformSubTitle>병원 별점</InformSubTitle>
+                            <StarContainer>
+                                <AverageContainer>
+                                    <AverageText>평균 별점</AverageText>
+                                    <Average>{average}점</Average>
+                                    <StarRate avr={average} />
+                                </AverageContainer>
+
+                                <LevelingContainer>
+                                    {Level.map((v, i) => {
+                                        return (
+                                            <Leveling>
+                                                <LevelingTitle>
+                                                    {5 - i}★
+                                                </LevelingTitle>
+                                                <StarLeveling exp={v} />
+                                            </Leveling>
+                                        )
+                                    })}
+                                </LevelingContainer>
+                            </StarContainer>
+                        </CommentContainer>
+
+                        <CommentContainer>
                             <InformSubTitle>병원 리뷰</InformSubTitle>
-                            <Comment
-                                user="서지호"
-                                star={3}
-                                content="아니 집가고 싶다니까 안 보내줘요"
-                            />
-                            <Comment
-                                user="서지호"
-                                star={3}
-                                content="아니 집가고 싶다니까 안 보내줘요"
-                            />
-                            <Comment
-                                user="서지호"
-                                star={3}
-                                content="아니 집가고 싶다니까 안 보내줘요"
-                            />
-                            <Comment
-                                user="서지호"
-                                star={3}
-                                content="아니 집가고 싶다니까 안 보내줘요"
-                            />
-                            <Comment
-                                user="서지호"
-                                star={3}
-                                content="아니 집가고 싶다니까 안 보내줘요"
-                            />
+                            {Reviews.map((v) => {
+                                return (
+                                    <Comment
+                                        user={v.user_id}
+                                        star={v.star}
+                                        content={v.content}
+                                    />
+                                )
+                            })}
                         </CommentContainer>
                     </InformContainer>
                 </Container>
@@ -81,7 +134,7 @@ export default MainPage
 const SideBarContainer = styled.div`
     width: 100%;
     height: 100vh;
-    z-index: 1;
+    z-index: 999;
     position: fixed;
     display: flex;
     justify-content: left;
@@ -96,6 +149,7 @@ const Background = styled.div`
 `
 
 const Container = styled.div`
+    z-index: 2;
     margin-left: auto;
     width: 78.65%;
     padding: 50px 0;
@@ -146,6 +200,7 @@ const SubmitButton = styled.button`
 
 const CommentContainer = styled.div`
     display: flex;
+    width: 800px;
     justify-content: center;
     align-items: start;
     flex-direction: column;
@@ -156,4 +211,54 @@ const InformSubTitle = styled.div`
     margin-left: 5px;
     color: ${Colors.Black};
     font-size: 20px;
+`
+
+const StarContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px 0;
+`
+
+const AverageContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+`
+
+const AverageText = styled.p`
+    font-size: 40px;
+    font-weight: bold;
+    color: ${Colors.Black};
+`
+
+const Average = styled.p`
+    font-size: 50px;
+    font-weight: bolder;
+    color: ${Colors.Blue500};
+`
+
+const LevelingTitle = styled.p`
+    font-size: 20px;
+    font-weight: bold;
+    color: ${Colors.Blue500};
+`
+
+const LevelingContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+`
+
+const Leveling = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 `
