@@ -4,9 +4,11 @@ import { Colors } from "../Style/colors"
 interface Props {
     name?: string
     type?: string
+    onInfrom?: () => void
+    onReview?: () => void
 }
 
-function SideBar({ name, type }: Props) {
+function SideBar({ name, type, onInfrom, onReview }: Props) {
     return (
         <>
             <Container>
@@ -18,8 +20,8 @@ function SideBar({ name, type }: Props) {
                 </ProfileContainer>
 
                 <MenuContainer>
-                    <ParentMenu>병원 정보</ParentMenu>
-                    <ParentMenu>병원 후기</ParentMenu>
+                    <ParentMenu onClick={onInfrom}>병원 정보</ParentMenu>
+                    <ParentMenu onClick={onReview}>병원 후기</ParentMenu>
                 </MenuContainer>
             </Container>
         </>
