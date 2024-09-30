@@ -5,8 +5,20 @@ import InformInput from "../components/InformInput"
 import Comment from "../components/comment"
 import StarRate from "../components/StarRating"
 import StarLeveling from "../components/StarLeveling"
+import { useRef } from "react"
 
 function MainPage() {
+    const InformRef = useRef<HTMLDivElement>(null)
+    const ReviewRef = useRef<HTMLDivElement>(null)
+
+    const onInformClick = () => {
+        InformRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    const onReviewClick = () => {
+        ReviewRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
     const Reviews = [
         {
             user_id: "서지호",
@@ -53,11 +65,16 @@ function MainPage() {
     return (
         <>
             <SideBarContainer>
-                <SideBar name="대덕소프트웨어마이스터병원" type="정신병원" />
+                <SideBar
+                    name="대덕소프트웨어마이스터병원"
+                    type="정신병원"
+                    onInfrom={onInformClick}
+                    onReview={onReviewClick}
+                />
             </SideBarContainer>
             <Background>
                 <Container>
-                    <InformContainer>
+                    <InformContainer ref={InformRef}>
                         <InformTitle>병원 정보</InformTitle>
                         <Form>
                             <InformInput
@@ -84,7 +101,7 @@ function MainPage() {
                         </Form>
                     </InformContainer>
 
-                    <InformContainer>
+                    <InformContainer ref={ReviewRef}>
                         <InformTitle>병원 후기</InformTitle>
                         <CommentContainer>
                             <InformSubTitle>병원 별점</InformSubTitle>
