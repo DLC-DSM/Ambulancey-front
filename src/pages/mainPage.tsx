@@ -60,6 +60,11 @@ function MainPage() {
             content: "나뭇잎 맛있어 냠냠",
             star: 4,
         },
+        {
+            user_id: "이현규",
+            content: "학생이 미쳤고 선생이 미쳤어요",
+            star: 4,
+        },
     ]
 
     const average =
@@ -86,6 +91,7 @@ function MainPage() {
                 <SideBar
                     name="대덕소프트웨어마이스터병원"
                     type="정신병원"
+                    review={Reviews.length}
                     onInfrom={onInformClick}
                     onReview={onReviewClick}
                 />
@@ -172,7 +178,7 @@ function MainPage() {
 export default MainPage
 
 const SideBarContainer = styled.div`
-    width: 100%;
+    width: 20%;
     height: 100vh;
     z-index: 999;
     position: fixed;
