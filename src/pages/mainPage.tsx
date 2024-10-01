@@ -45,11 +45,29 @@ function MainPage() {
             content: "재미없어",
             star: 2,
         },
+        {
+            user_id: "김효정",
+            content: "재밌다",
+            star: 5,
+        },
+        {
+            user_id: "서지유",
+            content: "대마고를 폭파시키게 되.",
+            star: 2,
+        },
+        {
+            user_id: "이금규",
+            content: "나뭇잎 맛있어 냠냠",
+            star: 4,
+        },
     ]
 
     const average =
-        Reviews.filter((v) => v.star).reduce((a, b) => a + b.star, 0) /
-        Reviews.length
+        Math.ceil(
+            (Reviews.filter((v) => v.star).reduce((a, b) => a + b.star, 0) /
+                Reviews.length) *
+                10
+        ) / 10
 
     const five =
         (Reviews.filter((v) => v.star == 5).length / Reviews.length) * 5
@@ -108,7 +126,12 @@ function MainPage() {
                             <StarContainer>
                                 <AverageContainer>
                                     <AverageText>평균 별점</AverageText>
-                                    <Average>{average}점</Average>
+                                    <Average>
+                                        {average % 1 == 0
+                                            ? average + ".0"
+                                            : average}
+                                        점
+                                    </Average>
                                     <StarRate avr={average} />
                                 </AverageContainer>
 
