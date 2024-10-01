@@ -4,11 +4,12 @@ import { Colors } from "../Style/colors"
 interface Props {
     name?: string
     type?: string
+    review?: number
     onInfrom?: () => void
     onReview?: () => void
 }
 
-function SideBar({ name, type, onInfrom, onReview }: Props) {
+function SideBar({ name, type, onInfrom, onReview, review }: Props) {
     return (
         <>
             <Container>
@@ -16,7 +17,7 @@ function SideBar({ name, type, onInfrom, onReview }: Props) {
                     <ProfileImg />
                     <ProfileName>{name}</ProfileName>
                     <ProfileText>{type}</ProfileText>
-                    <ProfileText>리뷰 개수 : 24</ProfileText>
+                    <ProfileText>리뷰 개수 : {review}</ProfileText>
                 </ProfileContainer>
 
                 <MenuContainer>
