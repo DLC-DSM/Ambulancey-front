@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import StartPage from "./pages/startPage"
-import LoginPage from "./pages/loginPage"
-import SignupPage from "./pages/signupPage"
+import StartPage from "./pages/start/startPage"
+import LoginPage from "./pages/start/loginPage"
+import SignupPage from "./pages/start/signupPage"
 import ScrollTop from "./scroll"
 import MainPage from "./pages/mainPage"
 

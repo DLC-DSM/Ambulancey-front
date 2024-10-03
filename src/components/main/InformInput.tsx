@@ -1,17 +1,16 @@
 import styled from "styled-components"
-import { Colors } from "../Style/colors"
+import { Colors } from "../../Style/colors"
 import { useState } from "react"
 import { IoMdEye } from "react-icons/io"
 import { IoMdEyeOff } from "react-icons/io"
 
 interface Props {
-    type?: string
     label?: string
     placeholder?: string
     value?: string
 }
 
-function InformInput({ type = "text", label, placeholder, value }: Props) {
+function InformInput({ label, placeholder, value }: Props) {
     const [show, setShow] = useState<Boolean>(false)
 
     const toggleShowHandler = () => {
@@ -23,28 +22,7 @@ function InformInput({ type = "text", label, placeholder, value }: Props) {
             <Container>
                 <Label>{label}</Label>
                 <InputContainer id="inpput">
-                    <InputText
-                        type={
-                            type == "password"
-                                ? !show
-                                    ? "password"
-                                    : "text"
-                                : type
-                        }
-                        placeholder={placeholder}
-                        value={value}
-                    />
-
-                    {type == "password" &&
-                        (show ? (
-                            <Icon onClick={toggleShowHandler}>
-                                <IoMdEye />
-                            </Icon>
-                        ) : (
-                            <Icon onClick={toggleShowHandler}>
-                                <IoMdEyeOff />
-                            </Icon>
-                        ))}
+                    <InputText placeholder={placeholder} value={value} />
                 </InputContainer>
             </Container>
         </>
@@ -110,17 +88,4 @@ const InputText = styled.input`
     &:focus {
         color: black;
     }
-`
-
-const Icon = styled.div`
-    margin-right: 5px;
-    text-align: center;
-    font-size: 24px;
-    color: ${Colors.Gray400};
-    cursor: pointer;
-    margin-left: auto;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 `

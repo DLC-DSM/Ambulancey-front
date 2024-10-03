@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Colors } from "../Style/colors"
+import { Colors } from "../../Style/colors"
 
 interface Props {
     user?: string

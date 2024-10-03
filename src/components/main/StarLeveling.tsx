@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import { Colors } from "../Style/colors"
+import { Colors } from "../../Style/colors"
 
 interface prop {
     exp: number
