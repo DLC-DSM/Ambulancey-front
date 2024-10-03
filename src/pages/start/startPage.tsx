@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { Colors } from "../Style/colors"
-import Logo from "../assets/Logo"
-import Button from "../components/Button"
+import { Colors } from "../../Style/colors"
+import Logo from "../../assets/Logo"
+import Button from "../../components/common/Button"
 import { useNavigate } from "react-router-dom"
 
 function StartPage() {
@@ -18,7 +18,7 @@ function StartPage() {
                     <LogoWrapper>
                         <Logo />
                     </LogoWrapper>
-                    <Button text="시작하기" onClick={toLoginHandler}/>
+                    <Button text="시작하기" onClick={toLoginHandler} />
                 </Container>
             </Background>
         </>

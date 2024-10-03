@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { Colors } from "../Style/colors"
-import MiniLogo from "../assets/MiniLogo"
-import Input from "../components/Input"
-import Button from "../components/Button"
+import { Colors } from "../../Style/colors"
+import MiniLogo from "../../assets/MiniLogo"
+import Input from "../../components/common/Input"
+import Button from "../../components/common/Button"
 import { useNavigate } from "react-router-dom"
 
 function SignupPage() {
@@ -47,10 +47,12 @@ function SignupPage() {
                     />
                     <Input label="아이디" placeholder="아이디를 입력해주세요" />
                     <Input
+                        type="password"
                         label="비밀번호"
                         placeholder="비밀번호를 입력해주세요"
                     />
                     <Input
+                        type="password"
                         label="비밀번호 확인"
                         placeholder="비밀번호를 다시 입력해주세요"
                     />

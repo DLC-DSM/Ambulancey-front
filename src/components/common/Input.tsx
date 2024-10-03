@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Colors } from "../Style/colors"
+import { Colors } from "../../Style/colors"
 import { useState } from "react"
 import { IoMdEye } from "react-icons/io"
 import { IoMdEyeOff } from "react-icons/io"

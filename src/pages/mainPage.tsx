@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import { Colors } from "../Style/colors"
-import SideBar from "../components/SideBar"
-import InformInput from "../components/InformInput"
-import Comment from "../components/comment"
-import StarRate from "../components/StarRating"
-import StarLeveling from "../components/StarLeveling"
+import SideBar from "../components/main/SideBar"
+import InformInput from "../components/main/InformInput"
+import Comment from "../components/main/comment"
+import StarRate from "../components/main/StarRating"
+import StarLeveling from "../components/main/StarLeveling"
 import { useRef } from "react"
 
 function MainPage() {

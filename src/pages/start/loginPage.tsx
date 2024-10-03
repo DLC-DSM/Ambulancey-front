@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { Colors } from "../Style/colors"
-import MiniLogo from "../assets/MiniLogo"
-import Input from "../components/Input"
-import Button from "../components/Button"
+import { Colors } from "../../Style/colors"
+import MiniLogo from "../../assets/MiniLogo"
+import Input from "../../components/common/Input"
+import Button from "../../components/common/Button"
 import { useNavigate } from "react-router-dom"
 
 function LoginPage() {
@@ -31,6 +31,7 @@ function LoginPage() {
                 <Form>
                     <Input label="아이디" placeholder="아이디를 입력해주세요" />
                     <Input
+                        type="password"
                         label="비밀번호"
                         placeholder="비밀번호를 입력해주세요"
                     />
@@ -38,7 +39,7 @@ function LoginPage() {
                     <ButtonWrapper>
                         <Button onClick={toMainHandler} text="로그인" />
                         <Ask>
-                            계정이 없으신가요?{" "}
+                            계정이 없으신가요?
                             <Accent onClick={toSignupHandler}>회원가입</Accent>
                         </Ask>
                     </ButtonWrapper>
