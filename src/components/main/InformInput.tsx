@@ -1,28 +1,27 @@
 import styled from "styled-components"
 import { Colors } from "../../Style/colors"
-import { useState } from "react"
-import { IoMdEye } from "react-icons/io"
-import { IoMdEyeOff } from "react-icons/io"
 
 interface Props {
     label?: string
     placeholder?: string
     value?: string
+    name?: string
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-function InformInput({ label, placeholder, value }: Props) {
-    const [show, setShow] = useState<Boolean>(false)
-
-    const toggleShowHandler = () => {
-        setShow(!show)
-    }
-
+function InformInput({ label, placeholder, value, name, onChange }: Props) {
     return (
         <>
             <Container>
                 <Label>{label}</Label>
                 <InputContainer id="inpput">
-                    <InputText placeholder={placeholder} value={value} />
+                    <InputText
+                        placeholder={placeholder}
+                        value={value}
+                        name={name}
+                        maxlength={100}
+                        onChange={onChange}
+                    />
                 </InputContainer>
             </Container>
         </>

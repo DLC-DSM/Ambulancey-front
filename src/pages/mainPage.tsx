@@ -5,9 +5,36 @@ import InformInput from "../components/main/InformInput"
 import Comment from "../components/main/comment"
 import StarRate from "../components/main/StarRating"
 import StarLeveling from "../components/main/StarLeveling"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 function MainPage() {
+    const [input, setInput] = useState({
+        hospital_name: "",
+        type: "",
+        address: "",
+        phone: "",
+        description: "",
+        open_time: "",
+        close_time: "",
+    })
+
+    const {
+        hospital_name,
+        type,
+        address,
+        phone,
+        description,
+        open_time,
+        close_time,
+    } = input
+
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target
+        setInput((input) => {
+            return { ...input, [name]: value }
+        })
+    }
+
     const InformRef = useRef<HTMLDivElement>(null)
     const ReviewRef = useRef<HTMLDivElement>(null)
 
@@ -67,6 +94,10 @@ function MainPage() {
         },
     ]
 
+    function GetNum(arr: any, n: number) {
+        return (arr.filter((v: any) => v.star == n).length / arr.length) * 5
+    }
+
     const average =
         Math.ceil(
             (Reviews.filter((v) => v.star).reduce((a, b) => a + b.star, 0) /
@@ -74,23 +105,20 @@ function MainPage() {
                 10
         ) / 10
 
-    const five =
-        (Reviews.filter((v) => v.star == 5).length / Reviews.length) * 5
-    const four =
-        (Reviews.filter((v) => v.star == 4).length / Reviews.length) * 5
-    const three =
-        (Reviews.filter((v) => v.star == 3).length / Reviews.length) * 5
-    const two = (Reviews.filter((v) => v.star == 2).length / Reviews.length) * 5
-    const one = (Reviews.filter((v) => v.star == 1).length / Reviews.length) * 5
-
-    const Level = [five, four, three, two, one]
+    const Level = [
+        GetNum(Reviews, 5),
+        GetNum(Reviews, 4),
+        GetNum(Reviews, 3),
+        GetNum(Reviews, 2),
+        GetNum(Reviews, 1),
+    ]
 
     return (
         <>
             <SideBarContainer>
                 <SideBar
-                    name="대덕소프트웨어마이스터병원"
-                    type="정신병원"
+                    name="둔산숲정신건강의학과의원"
+                    type="정신건강의학과"
                     review={Reviews.length}
                     onInfrom={onInformClick}
                     onReview={onReviewClick}
@@ -104,22 +132,51 @@ function MainPage() {
                             <InformInput
                                 label="병원 이름"
                                 placeholder="병원의 이름을 입력해주세요"
-                                value="대덕소프트웨어마이스터병원"
+                                value={hospital_name}
+                                onChange={onChange}
+                                name="hospital_name"
                             />
                             <InformInput
                                 label="병원 종류"
                                 placeholder="병원의 종류 입력해주세요"
-                                value="정신병원"
+                                value={type}
+                                onChange={onChange}
+                                name="type"
                             />
                             <InformInput
                                 label="병원 주소"
                                 placeholder="병원의 주소를 입력해주세요"
-                                value="대전광역시 유성구 가정북로 76"
+                                value={address}
+                                onChange={onChange}
+                                name="address"
                             />
                             <InformInput
                                 label="병원 전화번호"
                                 placeholder="병원의 전화번호를 입력해주세요"
-                                value="042-866-8822"
+                                value={phone}
+                                onChange={onChange}
+                                name="phone"
+                            />
+                            <InformInput
+                                label="병원 소개"
+                                placeholder="병원의 소개를 입력해주세요"
+                                value={description}
+                                onChange={onChange}
+                                name="phone"
+                            />
+                            <InformInput
+                                label="여는 시간"
+                                placeholder="병원이 여는 시간을 입력해주세요 (XX:XX)"
+                                value={open_time}
+                                onChange={onChange}
+                                name="open_time"
+                            />
+                            <InformInput
+                                label="닫는 시간"
+                                placeholder="병원이 닫는 시간을 입력해주세요 (XX:XX)"
+                                value={close_time}
+                                onChange={onChange}
+                                name="phone"
                             />
                             <SubmitButton>수정하기</SubmitButton>
                         </Form>

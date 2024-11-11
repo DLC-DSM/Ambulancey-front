@@ -32,35 +32,48 @@ function SignupPage() {
                     <Input
                         label="병원 이름"
                         placeholder="병원 이름을 입력해주세요"
+                        name="hospital_name"
                     />
                     <Input
                         label="병원 종류"
                         placeholder="병원 종류를 입력해주세요"
+                        name="type"
                     />
                     <Input
                         label="병원 주소"
                         placeholder="병원 주소를 입력해주세요"
+                        name="address"
                     />
                     <Input
                         label="병원 전화번호"
                         placeholder="병원 전화번호를 입력해주세요"
+                        name="phone"
                     />
-                    <Input label="아이디" placeholder="아이디를 입력해주세요" />
                     <Input
                         type="password"
                         label="비밀번호"
                         placeholder="비밀번호를 입력해주세요"
+                        name="password"
                     />
                     <Input
-                        type="password"
-                        label="비밀번호 확인"
-                        placeholder="비밀번호를 다시 입력해주세요"
+                        label="병원 소개"
+                        placeholder="병원 소개를 입력해주세요"
+                        name="description"
                     />
-
+                    <Input
+                        label="여는 시간"
+                        placeholder="병원이 여는 시간을 입력해주세요 (XX:XX)"
+                        name="open_time"
+                    />
+                    <Input
+                        label="닫는 시간"
+                        placeholder="병원이 닫는 시간을 입력해주세요 (XX:XX)"
+                        name="close_time"
+                    />
                     <ButtonWrapper>
                         <Button onClick={toMainHandler} text="회원가입" />
                         <Ask>
-                            이미 계정이 있으신가요?
+                            이미 계정이 있으신가요?{" "}
                             <Accent onClick={toLoginHandler}>로그인</Accent>
                         </Ask>
                     </ButtonWrapper>

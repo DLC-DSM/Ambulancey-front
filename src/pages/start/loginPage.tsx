@@ -29,17 +29,22 @@ function LoginPage() {
                 </TitleWrapper>
 
                 <Form>
-                    <Input label="아이디" placeholder="아이디를 입력해주세요" />
+                    <Input
+                        label="병원 이름"
+                        placeholder="병원의 이름을 입력해주세요"
+                        name="hospital_name"
+                    />
                     <Input
                         type="password"
                         label="비밀번호"
                         placeholder="비밀번호를 입력해주세요"
+                        name="password"
                     />
 
                     <ButtonWrapper>
                         <Button onClick={toMainHandler} text="로그인" />
                         <Ask>
-                            계정이 없으신가요?
+                            계정이 없으신가요?{" "}
                             <Accent onClick={toSignupHandler}>회원가입</Accent>
                         </Ask>
                     </ButtonWrapper>
