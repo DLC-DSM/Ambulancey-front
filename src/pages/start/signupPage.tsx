@@ -12,8 +12,8 @@ function SignupPage() {
         navigate("/login")
     }
 
-    const toMainHandler = () => {
-        navigate("/main")
+    const toKeyHandler = () => {
+        navigate("/key")
     }
 
     return (
@@ -71,7 +71,7 @@ function SignupPage() {
                         name="close_time"
                     />
                     <ButtonWrapper>
-                        <Button onClick={toMainHandler} text="회원가입" />
+                        <Button onClick={toKeyHandler} text="다음으로" />
                         <Ask>
                             이미 계정이 있으신가요?{" "}
                             <Accent onClick={toLoginHandler}>로그인</Accent>

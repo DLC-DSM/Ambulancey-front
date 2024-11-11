@@ -9,9 +9,20 @@ interface Props {
     label?: string
     placeholder?: string
     name?: string
+    width?: number
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+    value?: string
 }
 
-function Input({ type = "text", label, placeholder, name }: Props) {
+function Input({
+    type = "text",
+    label,
+    placeholder,
+    name,
+    width = 400,
+    onChange,
+    value,
+}: Props) {
     const [show, setShow] = useState<Boolean>(false)
 
     const toggleShowHandler = () => {
@@ -22,7 +33,7 @@ function Input({ type = "text", label, placeholder, name }: Props) {
         <>
             <Container>
                 <Label>{label}</Label>
-                <InputContainer>
+                <InputContainer width={width}>
                     <InputText
                         type={
                             type == "password"
@@ -34,6 +45,8 @@ function Input({ type = "text", label, placeholder, name }: Props) {
                         placeholder={placeholder}
                         name={name}
                         maxlength={100}
+                        onChange={onChange}
+                        value={value}
                     />
 
                     {type == "password" &&
@@ -69,7 +82,7 @@ const Label = styled.label`
 `
 
 const InputContainer = styled.div`
-    width: 400px;
+    width: ${({ width }) => `${width}px`};
     height: 35px;
     border-radius: 12px;
     background: ${Colors.Gray50};

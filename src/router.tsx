@@ -4,6 +4,7 @@ import LoginPage from "./pages/start/loginPage"
 import SignupPage from "./pages/start/signupPage"
 import ScrollTop from "./scroll"
 import MainPage from "./pages/mainPage"
+import KeyPage from "./pages/start/KeyPage"
 
 function Router() {
     return (
@@ -15,6 +16,7 @@ function Router() {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<SignupPage />} />
                     <Route path="/main" element={<MainPage />} />
+                    <Route path="/key" element={<KeyPage />} />
                 </Routes>
             </BrowserRouter>
         </>
