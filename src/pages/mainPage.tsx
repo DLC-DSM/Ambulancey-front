@@ -138,7 +138,7 @@ function MainPage() {
                             />
                             <InformInput
                                 label="병원 종류"
-                                placeholder="병원의 종류 입력해주세요"
+                                placeholder="병원의 종류를 입력해주세요"
                                 value={type}
                                 onChange={onChange}
                                 name="type"
