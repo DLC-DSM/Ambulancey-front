@@ -5,17 +5,13 @@ interface Props {
     text?: string
     onClick?: () => void
     value?: string
-    v?: boolean
+    disable?: boolean
 }
 
-function Button({ text, onClick, v = true, value }: Props) {
+function Button({ text, onClick, disable = true, value }: Props) {
     return (
         <>
-            <ButtonContainer
-                onClick={onClick}
-                v={v}
-                value={value}
-            >
+            <ButtonContainer onClick={disable ? ()=>{} : onClick} $v={disable} value={value}>
                 {text}
             </ButtonContainer>
         </>
@@ -27,7 +23,7 @@ export default Button
 const ButtonContainer = styled.button`
     width: 411.6px;
     height: 40px;
-    background: ${({ v }) => (v ? `${Colors.Blue500}` : `${Colors.Gray500}`)};
+    background: ${({ $v }) => ($v ? `${Colors.Gray500}` : `${Colors.Blue500}`)};
     border: none;
     font-size: 16px;
     font-weight: bold;

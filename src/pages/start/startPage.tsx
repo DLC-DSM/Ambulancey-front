@@ -18,7 +18,7 @@ function StartPage() {
                     <LogoWrapper>
                         <Logo />
                     </LogoWrapper>
-                    <Button text="시작하기" onClick={toLoginHandler} />
+                    <Button disable={false} text="시작하기" onClick={toLoginHandler} />
                 </Container>
             </Background>
         </>

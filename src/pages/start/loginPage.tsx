@@ -4,16 +4,47 @@ import MiniLogo from "../../assets/MiniLogo"
 import Input from "../../components/common/Input"
 import Button from "../../components/common/Button"
 import { useNavigate } from "react-router-dom"
+import AuthService from "../../apis/authService"
+import { useState } from "react"
 
 function LoginPage() {
+    const [name, setName] = useState<string>("")
+    const [pw, setPw] = useState<string>("")
+    const [loading, setLoading] = useState<boolean>(false)
+
+    const loginHandler = async () => {
+        console.log(1)
+        setLoading(true)
+        if (name && pw) {
+            const result = await AuthService.login(name, pw)
+            switch (result) {
+                case 200:
+                    alert("성공")
+                    break
+                case 401:
+                    alert("비번틀림")
+                    break
+                case 404:
+                    alert("없는 계정")
+                    break
+                default:
+                    alert("서버 오류")
+            }
+        }
+        setLoading(false)
+    }
+
+    const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setName(e.target.value)
+    }
+    const changePw = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPw(e.target.value)
+    }
+
     const navigate = useNavigate()
 
     const toSignupHandler = () => {
         navigate("/signup")
-    }
-
-    const toMainHandler = () => {
-        navigate("/main")
     }
 
     return (
@@ -33,16 +64,24 @@ function LoginPage() {
                         label="병원 이름"
                         placeholder="병원의 이름을 입력해주세요"
                         name="hospital_name"
+                        value={name}
+                        onChange={changeName}
                     />
                     <Input
                         type="password"
                         label="비밀번호"
                         placeholder="비밀번호를 입력해주세요"
                         name="password"
+                        value={pw}
+                        onChange={changePw}
                     />
 
                     <ButtonWrapper>
-                        <Button onClick={toMainHandler} text="로그인" />
+                        <Button
+                            disable={loading}
+                            onClick={() => loginHandler()}
+                            text="로그인"
+                        />
                         <Ask>
                             계정이 없으신가요?{" "}
                             <Accent onClick={toSignupHandler}>회원가입</Accent>
@@ -94,7 +133,7 @@ const SubTitle = styled.p`
     font-size: 20px;
 `
 
-const Form = styled.form`
+const Form = styled.div`
     width: 450px;
     padding: 40px 20px;
     border: 1px solid ${Colors.Blue800};
