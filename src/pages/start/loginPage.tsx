@@ -21,11 +21,11 @@ function LoginPage() {
                 case 200:
                     alert("성공")
                     break
-                case 401:
-                    alert("비번틀림")
-                    break
                 case 404:
                     alert("없는 계정")
+                    break
+                case 405:
+                    alert("허용되지 않은 메소드")
                     break
                 default:
                     alert("서버 오류")
