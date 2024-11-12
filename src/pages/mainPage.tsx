@@ -6,8 +6,10 @@ import Comment from "../components/main/comment"
 import StarRate from "../components/main/StarRating"
 import StarLeveling from "../components/main/StarLeveling"
 import { useRef, useState } from "react"
+import AuthServiceHospital from "../apis/hospital"
 
 function MainPage() {
+    const [loading, setLoading] = useState<boolean>(false)
     const [input, setInput] = useState({
         hospital_name: "",
         type: "",
@@ -33,6 +35,46 @@ function MainPage() {
         setInput((input) => {
             return { ...input, [name]: value }
         })
+    }
+
+    const updateHandler = async () => {
+        setLoading(true)
+        if (
+            hospital_name &&
+            type &&
+            address &&
+            phone &&
+            description &&
+            open_time &&
+            close_time
+        ) {
+            const result = await AuthServiceHospital.update(
+                hospital_name,
+                type,
+                address,
+                phone,
+                description,
+                open_time,
+                close_time
+            )
+            switch (result) {
+                case 401:
+                    alert(401)
+                    break
+                case 403:
+                    alert(403)
+                    break
+                case 404:
+                    alert(404)
+                    break
+                case 405:
+                    alert(405)
+                    break
+                default:
+                    alert(500)
+            }
+        }
+        setLoading(false)
     }
 
     const InformRef = useRef<HTMLDivElement>(null)
@@ -162,7 +204,7 @@ function MainPage() {
                                 placeholder="병원의 소개를 입력해주세요"
                                 value={description}
                                 onChange={onChange}
-                                name="phone"
+                                name="description"
                             />
                             <InformInput
                                 label="여는 시간"
@@ -176,9 +218,11 @@ function MainPage() {
                                 placeholder="병원이 닫는 시간을 입력해주세요 (XX:XX)"
                                 value={close_time}
                                 onChange={onChange}
-                                name="phone"
+                                name="close_time"
                             />
-                            <SubmitButton>수정하기</SubmitButton>
+                            <SubmitButton onClick={updateHandler} $v={loading}>
+                                수정하기
+                            </SubmitButton>
                         </Form>
                     </InformContainer>
 
@@ -299,6 +343,7 @@ const SubmitButton = styled.button`
     align-items: center;
     font-size: 16px;
     cursor: pointer;
+    background: ${({ $v }) => ($v ? `${Colors.Gray500}` : `${Colors.Blue500}`)};
 `
 
 const CommentContainer = styled.div`
