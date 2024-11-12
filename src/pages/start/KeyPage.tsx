@@ -48,7 +48,7 @@ function KeyPage() {
                     <ButtonWrapper>
                         <Button
                             text="인증키 확인"
-                            v={key.length ? true : false}
+                            disable={key.length ? false : true}
                             value={key}
                         />
                         <Button onClick={toMainHandler} text="회원가입" />
