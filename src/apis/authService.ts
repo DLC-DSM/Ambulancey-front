@@ -2,16 +2,14 @@ import { AxiosError } from "axios"
 import instance, { tempCookie } from "./interceptor"
 
 export default class AuthService {
-    static async login(
-        hospital_name: string,
-        password: string
-    ): Promise<number> {
+    static async login(username: string, password: string): Promise<number> {
         try {
             const response = await instance.post("/user/login", {
-                hospital_name: hospital_name,
+                email: username,
                 password: password,
             })
             tempCookie.setToken(response.headers["Authorization"])
+            console.log(instance)
             return response.status
         } catch (e) {
             if (e instanceof AxiosError) {
@@ -34,7 +32,7 @@ export default class AuthService {
         authentication_key: string
     ): Promise<number> {
         try {
-            const response = await instance.post("/user/hospital_register", {
+            const response = await instance.post("/hopital/application", {
                 hospital_name: hospital_name,
                 type: type,
                 address: address,

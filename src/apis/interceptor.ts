@@ -19,7 +19,7 @@ class TempCookie {
 export const tempCookie: TempCookie = new TempCookie()
 
 const instance = axios.create({
-    baseURL: process.env.REACT_APP_BASE_URL,
+    baseURL: "http://13.124.47.171:8030",
     timeout: 30000,
 })
 

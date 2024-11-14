@@ -90,49 +90,29 @@ function MainPage() {
 
     const Reviews = [
         {
-            user_id: "서지호",
-            content: "아니 집에 가고 싶다니까 안 보내줘요",
+            user_id: "홍길동",
+            content: "테스트중",
             star: 1,
         },
         {
-            user_id: "김성민",
-            content: "아무나 내 코드 리뷰해주실분",
-            star: 3,
-        },
-        {
-            user_id: "양병건",
-            content: "코드리뷰 해달라구요?",
-            star: 3,
-        },
-        {
-            user_id: "김효정",
-            content: "으앙 집가고 싶다",
-            star: 5,
-        },
-        {
-            user_id: "김성민",
-            content: "재미없어",
-            star: 2,
-        },
-        {
-            user_id: "김효정",
-            content: "재밌다",
-            star: 5,
-        },
-        {
-            user_id: "서지유",
-            content: "대마고를 폭파시키게 되.",
-            star: 2,
-        },
-        {
-            user_id: "이금규",
-            content: "나뭇잎 맛있어 냠냠",
+            user_id: "홍길동",
+            content: "테스트중",
             star: 4,
         },
         {
-            user_id: "이현규",
-            content: "학생이 미쳤고 선생이 미쳤어요",
-            star: 4,
+            user_id: "홍길동",
+            content: "테스트중",
+            star: 2,
+        },
+        {
+            user_id: "홍길동",
+            content: "테스트중",
+            star: 1,
+        },
+        {
+            user_id: "홍길동",
+            content: "테스트중",
+            star: 5,
         },
     ]
 

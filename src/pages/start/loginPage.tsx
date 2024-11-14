@@ -8,15 +8,15 @@ import AuthService from "../../apis/authService"
 import { useState } from "react"
 
 function LoginPage() {
-    const [name, setName] = useState<string>("")
-    const [pw, setPw] = useState<string>("")
+    const [username, setName] = useState<string>("")
+    const [password, setPw] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
 
     const loginHandler = async () => {
         console.log(1)
         setLoading(true)
-        if (name && pw) {
-            const result = await AuthService.login(name, pw)
+        if (username && password) {
+            const result = await AuthService.login(username, password)
             switch (result) {
                 case 200:
                     alert("성공")
@@ -64,7 +64,7 @@ function LoginPage() {
                         label="병원 이름"
                         placeholder="병원의 이름을 입력해주세요"
                         name="hospital_name"
-                        value={name}
+                        value={username}
                         onChange={changeName}
                     />
                     <Input
@@ -72,7 +72,7 @@ function LoginPage() {
                         label="비밀번호"
                         placeholder="비밀번호를 입력해주세요"
                         name="password"
-                        value={pw}
+                        value={password}
                         onChange={changePw}
                     />
 
