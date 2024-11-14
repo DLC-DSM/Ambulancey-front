@@ -63,7 +63,7 @@ function SignupPage() {
                 password,
                 authentication_key
             )
-
+            console.log(`error : ${result}`)
             switch (result) {
                 case 200:
                     alert("성공")
